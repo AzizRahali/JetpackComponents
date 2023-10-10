@@ -1,5 +1,7 @@
 package com.example.jetpackcomponents
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -16,7 +18,10 @@ fun OverlayLayout(
     Layout(
         modifier = modifier,
         content = {
-            content1()
+
+                content1()
+
+
             content2()
         }
     ) { measurables, constraints ->
@@ -26,12 +31,15 @@ fun OverlayLayout(
         layout(constraints.maxWidth, constraints.maxHeight) {
             // Place the first component at the top center
             placeable1.place(
-                x = 0,
+                x = (constraints.maxWidth - placeable1.width)/2,
                 y = 0
             )
 
             // Place the second component at the top left
-            placeable2.place(0, 0)
+            placeable2.place(
+                x = (constraints.maxWidth - placeable2.width) / 2, // Center horizontally
+                y = (constraints.maxHeight - placeable2.height) / 2 // Center vertically
+            )
         }
     }
 }

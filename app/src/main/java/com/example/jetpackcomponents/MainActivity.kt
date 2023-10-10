@@ -27,7 +27,9 @@ class MainActivity : ComponentActivity() {
             JetpackComponentsTheme {
                 // A surface container using the 'background' color from the theme
                 Column {
-                    OverlayLayout(modifier = Modifier.fillMaxSize(),content1 = { PushNotificationDemo(n = 5) }, content2 = { WebViewComponent() })
+                    //OverlayLayout(modifier = Modifier.fillMaxSize(),content1 = { PushNotificationDemo(n = 5) }, content2 = { WebViewComponent() })
+                    OverlayLayout(content1 = { PushNotificationDemo(n = 7) }, content2 = {WebViewComponent()})
+
 
                     }
 
@@ -35,19 +37,5 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-    @Composable
-    fun WebViewComponent() {
-        
-        AndroidView(
-            modifier = Modifier
-                .fillMaxSize()
-                .zIndex(0f),
-            factory = { context ->
-                WebView(context).apply {
-                    webViewClient = WebViewClient()
-                    loadUrl("https://www.bmw.com") // Load your URL here
-                }
-            }
-        )
-    }
+
 
