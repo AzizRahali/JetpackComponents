@@ -1,7 +1,6 @@
 package com.example.jetpackcomponents
 
 
-import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -23,13 +22,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
-import androidx.navigation.NavHost
-import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+
 
 @Composable
 fun PushNotificationDemo(
     n: Int,
-    //onClick: () -> Unit
+
+    navigation: NavController
 
 ) {
 
@@ -39,12 +39,13 @@ fun PushNotificationDemo(
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(16.dp)
-            .zIndex(1f),
-            //.clickable {            },TODO:Implement the navigation to destination screen logic
+            .zIndex(1f)
+            .clickable {    navigation.navigate("DestinationScreen")  }
 
 
 
-    colors = CardDefaults.cardColors(
+
+    ,colors = CardDefaults.cardColors(
         containerColor = MaterialTheme.colorScheme.onError,
     ),
     elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
@@ -90,9 +91,11 @@ fun PushNotificationDemo(
 @Preview
 @Composable
 fun PushNotificationScreen() {
-    val navController = NavController
+    val navigation = rememberNavController()
 
 
-    PushNotificationDemo(n = 7)
+    PushNotificationDemo(
+        7, navigation)
+
 }
 
