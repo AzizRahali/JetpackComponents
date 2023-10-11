@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                     composable("DestinationScreen") {
-                        DestinationScreen()
+                        DestinationScreen(navController)
                     }
                 }
                 // A surface container using the 'background' color from the theme
